@@ -364,6 +364,53 @@
     color: var(--muted);
   }
 
+  /* ── INDUSTRIES STRIP ── */
+  .industries-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s ease forwards;
+  }
+
+  .industries-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .industries-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ind-tag {
+    font-size: 12px;
+    color: var(--muted);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 13px;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .ind-tag:hover {
+    color: var(--text);
+    border-color: rgba(201,168,76,0.3);
+  }
+
   /* ── PORTFOLIO ── */
   .portfolio {
     margin-bottom: 64px;
@@ -435,6 +482,15 @@
     border-radius: 2px;
     color: var(--muted);
     background: rgba(255,255,255,0.02);
+  }
+
+  .industry-pill {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #6a8fa8;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
   }
 
   .project h4 {
@@ -512,8 +568,9 @@
     </div>
     <div class="contact-block">
       <a href="mailto:abendanjulius@gmail.com">abendanjulius@gmail.com</a>
-      <a href="#">Dubai, UAE · Remote Available</a>
-      <a href="https://github.com/abendanjulius">github.com/abendanjulius</a>
+      <a href="tel:+971505126998">+971 50 512 6998</a>
+      <a href="https://ph.linkedin.com/in/juliusabendan" target="_blank">linkedin.com/in/juliusabendan</a>
+      <a href="https://github.com/abendanjulius" target="_blank">github.com/abendanjulius</a>
       <span class="badge">HubSpot Certified</span>
     </div>
   </header>
@@ -525,6 +582,19 @@
     I specialize in building the systems, automations, and data pipelines that turn your existing stack into
     a <strong>closed-loop revenue engine</strong> — from first click to closed deal.
   </p>
+
+  <!-- INDUSTRIES -->
+  <div class="industries-strip">
+    <span class="industries-label">Industries Served</span>
+    <div class="industries-list">
+      <span class="ind-tag">🏗️ Heavy Equipment & Machinery</span>
+      <span class="ind-tag">🏥 Healthcare & Clinics</span>
+      <span class="ind-tag">🛍️ E-Commerce & Retail</span>
+      <span class="ind-tag">🏢 B2B Sales & Rental</span>
+      <span class="ind-tag">📣 Digital Agencies</span>
+      <span class="ind-tag">🌏 UAE · Australia · Philippines</span>
+    </div>
+  </div>
 
   <!-- SERVICES -->
   <p class="section-label">// What I Deliver</p>
@@ -578,14 +648,19 @@
       <span class="tag">Google Tag Manager</span>
       <span class="tag">Meta WhatsApp Cloud API</span>
       <span class="tag">Google Ads</span>
+      <span class="tag">Meta Ads</span>
       <span class="tag">Python</span>
       <span class="tag">JavaScript</span>
-      <span class="tag">REST APIs</span>
+      <span class="tag">REST APIs & Webhooks</span>
       <span class="tag">Google Merchant Center</span>
+      <span class="tag">A/B Testing & CRO</span>
+      <span class="tag">Landing Page Optimization</span>
+      <span class="tag">Attribution Modeling</span>
       <span class="tag">FormCrafts</span>
       <span class="tag">Ziwo</span>
       <span class="tag">SimpleScraper</span>
       <span class="tag">Google Sheets / Apps Script</span>
+      <span class="tag">Vibe Coding</span>
     </div>
   </div>
 
@@ -620,6 +695,7 @@
             <span class="project-tag">WhatsApp API</span>
           </div>
         </div>
+        <div class="industry-pill">🏗️ Heavy Equipment &amp; B2B Sales · UAE</div>
         <h4>Enterprise CRM & WhatsApp Automation</h4>
         <p>Architected and managed two enterprise HubSpot accounts for a heavy equipment company — including full pipeline design, lifecycle automation, lead scoring, and custom property frameworks. Integrated <strong>Meta WhatsApp Cloud API</strong> via Make.com for automated outreach with full CRM contact attribution.</p>
         <div class="project-outcome">
@@ -636,6 +712,7 @@
             <span class="project-tag">Angular SPA</span>
           </div>
         </div>
+        <div class="industry-pill">🏗️ Heavy Equipment &amp; B2B Marketplace · UAE</div>
         <h4>SPA Conversion Tracking via API Interception</h4>
         <p>Solved a notoriously difficult problem: capturing booking confirmations, offer submissions, and appraisal events on a JavaScript/Angular single-page app with no page reloads. Built <strong>custom fetch/XHR interceptors</strong> in GTM Custom HTML tags that fire events reliably without requiring dev changes.</p>
         <div class="project-outcome">
@@ -652,6 +729,7 @@
             <span class="project-tag">Google Sheets</span>
           </div>
         </div>
+        <div class="industry-pill">🚜 Equipment Sales &amp; Rental · UAE</div>
         <h4>Live Product Feed & Inventory Pipeline</h4>
         <p>Built a Python scraper against an internal JSON API to pull and monitor 20+ fields across an entire machinery catalog. Tracks <strong>price changes, status transitions</strong> (active/sold/reserved), and customs flags — pushing updates to Google Sheets via Apps Script webhook and Make.com automations.</p>
         <div class="project-outcome">
@@ -668,6 +746,7 @@
             <span class="project-tag">Python</span>
           </div>
         </div>
+        <div class="industry-pill">🚜 Heavy Machinery &amp; Industrial Equipment · UAE</div>
         <h4>AI & Merchant Shopping Feed Integration</h4>
         <p>Designed and built compliant product feeds for <strong>Google Merchant Center</strong> (category 1795: Heavy Machinery) and OpenAI's stable merchant feed spec — enabling inventory to surface in AI-powered shopping results. Handled pagination, slug-based URL generation, and spec validation from scratch.</p>
         <div class="project-outcome">
@@ -684,6 +763,7 @@
             <span class="project-tag">OAuth2</span>
           </div>
         </div>
+        <div class="industry-pill">🛠️ Productivity SaaS · Personal Project</div>
         <h4>SideScribe — Note-Taking Chrome Extension</h4>
         <p>Built a full-featured Manifest V3 Chrome extension with rich text editing, folder organization, reminders, and <strong>Google Drive cloud sync</strong> via <code>appDataFolder</code>. Also ported to a PWA on GitHub Pages sharing the same cloud file — with auto-fetch polling and a conflict detection modal.</p>
         <div class="project-outcome">
@@ -700,10 +780,45 @@
             <span class="project-tag">Keyword Research</span>
           </div>
         </div>
+        <div class="industry-pill">🏗️ Heavy Equipment &amp; Construction · UAE</div>
         <h4>1,600+ Keyword SEO Taxonomy</h4>
         <p>Built a 1,672-keyword SEO strategy spreadsheet derived from actual product taxonomy — 24 brands, 12 equipment categories — mapped to search intent and funnel stage. Cross-referenced with <strong>GA4 and Google Search Console</strong> data to identify high-opportunity SKU pages and AI traffic sources (ChatGPT, Copilot).</p>
         <div class="project-outcome">
           <span>📌 Full keyword-to-page mapping · AI search traffic identified and segmented · Actionable content gap analysis delivered</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="project-type">Paid Media & Lead Gen</span>
+          <div class="project-tags">
+            <span class="project-tag">Google Ads</span>
+            <span class="project-tag">Meta Ads</span>
+            <span class="project-tag">CRO</span>
+          </div>
+        </div>
+        <div class="industry-pill">🏥 Healthcare & Medical Clinics · Dubai, UAE</div>
+        <h4>Full-Funnel Digital Marketing for a Medical Clinic</h4>
+        <p>Managed all digital media assets for a Dubai-based clinic — running <strong>Google Ads, SEO, social media, content creation, and video</strong> end-to-end. Built and optimized lead generation campaigns to drive patient bookings, with conversion funnel tracking from ad click to confirmed appointment.</p>
+        <div class="project-outcome">
+          <span>📌 Multi-channel lead gen across search & social · Booking-focused conversion funnel · Full in-house creative production</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="project-type">SEO & Media Buying</span>
+          <div class="project-tags">
+            <span class="project-tag">SEO</span>
+            <span class="project-tag">PPC</span>
+            <span class="project-tag">Affiliates</span>
+          </div>
+        </div>
+        <div class="industry-pill">🛍️ E-Commerce & Retail · Australia (Remote)</div>
+        <h4>Organic Growth & Media Buying for E-Commerce Brand</h4>
+        <p>Led SEO and organic sales strategy for an Australian e-commerce brand, managing a team covering <strong>PPC, social media, content, affiliates, and email</strong>. Drove consistent revenue growth through channel coordination and performance-focused campaign management across multiple markets.</p>
+        <div class="project-outcome">
+          <span>📌 Multi-channel team management · Affiliate + organic + paid working in sync · Remote delivery across time zones</span>
         </div>
       </div>
 
@@ -724,7 +839,7 @@
   <!-- FOOTER -->
   <footer>
     <p><span>Julius Abendan</span> · Senior Digital Marketing & CRM Solutions Architect</p>
-    <p><span>Dubai, UAE · Available for Remote Projects</span></p>
+    <p><span>Dubai, UAE · <a href="https://ph.linkedin.com/in/juliusabendan" style="color:var(--muted);text-decoration:none;">linkedin.com/in/juliusabendan</a></span></p>
   </footer>
 
 </div>
