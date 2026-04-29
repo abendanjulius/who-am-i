@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julius Abendan — Digital Marketing & CRM Solutions Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0f14;
+    --surface: #13181f;
+    --border: #1e2730;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --text: #e8e4dc;
+    --muted: #7a8492;
+    --accent: #2a8fff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .name-block {}
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .tagline {
+    margin-top: 14px;
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 400;
+    max-width: 420px;
+    line-height: 1.6;
+  }
+
+  .contact-block {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .contact-block a {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    line-height: 2;
+    transition: color 0.2s;
+  }
+
+  .contact-block a:hover { color: var(--gold); }
+
+  .badge {
+    display: inline-block;
+    margin-top: 12px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #b8c0cc;
+    max-width: 700px;
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.15s ease forwards;
+  }
+
+  .intro strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.25s ease forwards;
+  }
+
+  /* ── SERVICES GRID ── */
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 64px;
+  }
+
+  .service {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 28px 24px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .service::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .service:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-2px);
+  }
+
+  .service:hover::before { opacity: 1; }
+
+  .service-icon {
+    font-size: 20px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .service h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .service p {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .service p strong {
+    color: #9ab4cc;
+    font-weight: 500;
+  }
+
+  /* animate services in sequence */
+  .service:nth-child(1) { animation: fadeUp 0.5s 0.3s ease forwards; }
+  .service:nth-child(2) { animation: fadeUp 0.5s 0.38s ease forwards; }
+  .service:nth-child(3) { animation: fadeUp 0.5s 0.46s ease forwards; }
+  .service:nth-child(4) { animation: fadeUp 0.5s 0.54s ease forwards; }
+  .service:nth-child(5) { animation: fadeUp 0.5s 0.62s ease forwards; }
+  .service:nth-child(6) { animation: fadeUp 0.5s 0.70s ease forwards; }
+
+  /* ── STACK ── */
+  .stack-section {
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.8s ease forwards;
+  }
+
+  .stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--muted);
+    background: var(--surface);
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .tag:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.05);
+  }
+
+  /* ── PROOF ── */
+  .proof {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.9s ease forwards;
+  }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px 22px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(42,143,255,0.04));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s 1.0s ease forwards;
+  }
+
+  .cta-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .cta-text p {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: #0c0f14;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 14px 24px;
+    border-radius: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .cta-link:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.5s 1.1s ease forwards;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--border);
+    letter-spacing: 0.05em;
+  }
+
+  footer p span {
+    color: var(--muted);
+  }
+
+  /* ── PORTFOLIO ── */
+  .portfolio {
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.95s ease forwards;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .project {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 26px 26px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+
+  .project::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .project:hover {
+    border-color: rgba(201,168,76,0.25);
+    transform: translateY(-2px);
+  }
+
+  .project:hover::after { opacity: 1; }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .project-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  .project-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .project h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .project p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .project p strong {
+    color: #9ab4cc;
+    font-weight: 500;
+  }
+
+  .project-outcome {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(201,168,76,0.05);
+    border-left: 2px solid var(--gold);
+    padding: 9px 12px;
+    border-radius: 0 3px 3px 0;
+  }
+
+  .project-outcome span {
+    font-size: 12px;
+    color: #c8b87a;
+    line-height: 1.5;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; color: #111; }
+    body::before { display: none; }
+    .page { padding: 30px; }
+    .service, .stat { break-inside: avoid; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .page { padding: 36px 24px; }
+    header { grid-template-columns: 1fr; }
+    .contact-block { text-align: left; }
+    .services { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .proof { grid-template-columns: 1fr; }
+    .cta { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="name-block">
+      <p class="eyebrow">Freelance Consultant</p>
+      <h1>Julius<br><em>Abendan</em></h1>
+      <p class="tagline">I bridge the gap between marketing strategy and technical execution — turning your tools into revenue.</p>
+    </div>
+    <div class="contact-block">
+      <a href="mailto:abendanjulius@gmail.com">abendanjulius@gmail.com</a>
+      <a href="#">Dubai, UAE · Remote Available</a>
+      <a href="https://github.com/abendanjulius">github.com/abendanjulius</a>
+      <span class="badge">HubSpot Certified</span>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <p class="intro">
+    Most businesses have the tools. Few use them to their full potential.
+    With <strong>10+ years in digital marketing</strong> and <strong>5+ years as a HubSpot Super Admin</strong>,
+    I specialize in building the systems, automations, and data pipelines that turn your existing stack into
+    a <strong>closed-loop revenue engine</strong> — from first click to closed deal.
+  </p>
+
+  <!-- SERVICES -->
+  <p class="section-label">// What I Deliver</p>
+  <div class="services">
+
+    <div class="service">
+      <span class="service-icon">⚙️</span>
+      <h3>CRM Architecture & HubSpot</h3>
+      <p>Full HubSpot setup and optimization — pipelines, workflows, lifecycle stages, lead scoring, custom properties, and multi-account management. <strong>Super Admin</strong> across enterprise accounts with 120K+ contacts.</p>
+    </div>
+
+    <div class="service">
+      <span class="service-icon">📲</span>
+      <h3>WhatsApp & Omnichannel Messaging</h3>
+      <p>Integrate <strong>WhatsApp Business API</strong> into your CRM for automated outreach, template campaigns, and lead nurturing — with full contact-level attribution back to source.</p>
+    </div>
+
+    <div class="service">
+      <span class="service-icon">📊</span>
+      <h3>Analytics & Conversion Tracking</h3>
+      <p><strong>GA4 + Google Tag Manager</strong> implementations that capture every meaningful interaction — form fills, bookings, transactions — even on complex JS/Angular SPAs. Attribution that actually makes sense.</p>
+    </div>
+
+    <div class="service">
+      <span class="service-icon">🔗</span>
+      <h3>Systems Integration & Automation</h3>
+      <p>Connect your entire stack using <strong>Make.com</strong>, REST APIs, and webhooks. Eliminate manual exports. Automate data flows between CRM, website, ad platforms, and reporting tools.</p>
+    </div>
+
+    <div class="service">
+      <span class="service-icon">🛒</span>
+      <h3>Product Feeds & AI Commerce</h3>
+      <p>Build and maintain <strong>Google Merchant Center</strong> and AI shopping feeds (OpenAI, Gemini) so your catalog surfaces where buyers are searching — automatically.</p>
+    </div>
+
+    <div class="service">
+      <span class="service-icon">📈</span>
+      <h3>Paid Media & SEO</h3>
+      <p>Manage <strong>Google Ads &amp; Meta</strong> campaigns with proper conversion tracking. Build keyword strategies from your product taxonomy and optimize for both traditional and AI-driven search.</p>
+    </div>
+
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="stack-section">
+    <p class="section-label">// Tech Stack</p>
+    <div class="stack-grid">
+      <span class="tag">HubSpot</span>
+      <span class="tag">Make.com</span>
+      <span class="tag">GA4</span>
+      <span class="tag">Google Tag Manager</span>
+      <span class="tag">Meta WhatsApp Cloud API</span>
+      <span class="tag">Google Ads</span>
+      <span class="tag">Python</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">REST APIs</span>
+      <span class="tag">Google Merchant Center</span>
+      <span class="tag">FormCrafts</span>
+      <span class="tag">Ziwo</span>
+      <span class="tag">SimpleScraper</span>
+      <span class="tag">Google Sheets / Apps Script</span>
+    </div>
+  </div>
+
+  <!-- PROOF -->
+  <p class="section-label">// By The Numbers</p>
+  <div class="proof">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years in Digital<br>Marketing</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">120K+</div>
+      <div class="stat-label">CRM Contacts<br>Managed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">HubSpot Certifications<br>& Super Admin Experience</div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div class="portfolio">
+    <p class="section-label">// Selected Work</p>
+    <div class="portfolio-grid">
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="project-type">CRM Architecture</span>
+          <div class="project-tags">
+            <span class="project-tag">HubSpot</span>
+            <span class="project-tag">Make.com</span>
+            <span class="project-tag">WhatsApp API</span>
+          </div>
+        </div>
+        <h4>Enterprise CRM & WhatsApp Automation</h4>
+        <p>Architected and managed two enterprise HubSpot accounts for a heavy equipment company — including full pipeline design, lifecycle automation, lead scoring, and custom property frameworks. Integrated <strong>Meta WhatsApp Cloud API</strong> via Make.com for automated outreach with full CRM contact attribution.</p>
+        <div class="project-outcome">
+          <span>📌 120K+ contacts across accounts · Automated multi-stage nurture sequences · WhatsApp template campaigns tied to HubSpot deal stages</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="project-type">Analytics & Tracking</span>
+          <div class="project-tags">
+            <span class="project-tag">GTM</span>
+            <span class="project-tag">GA4</span>
+            <span class="project-tag">Angular SPA</span>
+          </div>
+        </div>
+        <h4>SPA Conversion Tracking via API Interception</h4>
+        <p>Solved a notoriously difficult problem: capturing booking confirmations, offer submissions, and appraisal events on a JavaScript/Angular single-page app with no page reloads. Built <strong>custom fetch/XHR interceptors</strong> in GTM Custom HTML tags that fire events reliably without requiring dev changes.</p>
+        <div class="project-outcome">
+          <span>📌 5 conversion event types tracked · Full attribution from ad click to form submit · Zero dependency on dev team deploys</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="project-type">Data Engineering</span>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">REST API</span>
+            <span class="project-tag">Google Sheets</span>
+          </div>
+        </div>
+        <h4>Live Product Feed & Inventory Pipeline</h4>
+        <p>Built a Python scraper against an internal JSON API to pull and monitor 20+ fields across an entire machinery catalog. Tracks <strong>price changes, status transitions</strong> (active/sold/reserved), and customs flags — pushing updates to Google Sheets via Apps Script webhook and Make.com automations.</p>
+        <div class="project-outcome">
+          <span>📌 Real-time inventory sync · Automated change detection alerts · Foundation for Google Merchant Center and OpenAI shopping feeds</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="project-type">AI Commerce</span>
+          <div class="project-tags">
+            <span class="project-tag">Google Merchant</span>
+            <span class="project-tag">OpenAI Feed</span>
+            <span class="project-tag">Python</span>
+          </div>
+        </div>
+        <h4>AI & Merchant Shopping Feed Integration</h4>
+        <p>Designed and built compliant product feeds for <strong>Google Merchant Center</strong> (category 1795: Heavy Machinery) and OpenAI's stable merchant feed spec — enabling inventory to surface in AI-powered shopping results. Handled pagination, slug-based URL generation, and spec validation from scratch.</p>
+        <div class="project-outcome">
+          <span>📌 Full catalog syndicated to Google Shopping & AI search · First-mover advantage in AI commerce for heavy equipment vertical</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="project-type">Chrome Extension / Product</span>
+          <div class="project-tags">
+            <span class="project-tag">Manifest V3</span>
+            <span class="project-tag">Google Drive API</span>
+            <span class="project-tag">OAuth2</span>
+          </div>
+        </div>
+        <h4>SideScribe — Note-Taking Chrome Extension</h4>
+        <p>Built a full-featured Manifest V3 Chrome extension with rich text editing, folder organization, reminders, and <strong>Google Drive cloud sync</strong> via <code>appDataFolder</code>. Also ported to a PWA on GitHub Pages sharing the same cloud file — with auto-fetch polling and a conflict detection modal.</p>
+        <div class="project-outcome">
+          <span>📌 Published to Chrome Web Store · Cross-device sync via Google Drive · PWA + extension sharing single data source</span>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">
+          <span class="project-type">SEO & Strategy</span>
+          <div class="project-tags">
+            <span class="project-tag">GA4</span>
+            <span class="project-tag">GSC</span>
+            <span class="project-tag">Keyword Research</span>
+          </div>
+        </div>
+        <h4>1,600+ Keyword SEO Taxonomy</h4>
+        <p>Built a 1,672-keyword SEO strategy spreadsheet derived from actual product taxonomy — 24 brands, 12 equipment categories — mapped to search intent and funnel stage. Cross-referenced with <strong>GA4 and Google Search Console</strong> data to identify high-opportunity SKU pages and AI traffic sources (ChatGPT, Copilot).</p>
+        <div class="project-outcome">
+          <span>📌 Full keyword-to-page mapping · AI search traffic identified and segmented · Actionable content gap analysis delivered</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="cta-text">
+      <h3>Let's talk about your stack.</h3>
+      <p>Free discovery call — I'll audit what you have and show you exactly what's being left on the table.</p>
+    </div>
+    <a class="cta-link" href="mailto:abendanjulius@gmail.com">
+      Get in Touch →
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><span>Julius Abendan</span> · Senior Digital Marketing & CRM Solutions Architect</p>
+    <p><span>Dubai, UAE · Available for Remote Projects</span></p>
+  </footer>
+
+</div>
+</body>
+</html>
